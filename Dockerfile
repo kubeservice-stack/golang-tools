@@ -32,6 +32,6 @@ RUN wget https://github.com/gotestyourself/gotestsum/releases/download/v${GOTEST
 FROM builder AS lint
 COPY --from=lint-base /usr/bin/golangci-lint /usr/bin/golangci-lint
 COPY --from=gotestsum /root/gotestsum /usr/local/bin/gotestsum
-RUN go install github.com/axw/gocov/gocov@latest
-RUN go install github.com/AlekSi/gocov-xml@latest
+RUN go install github.com/axw/gocov/gocov@latest && mv ${GOPATH}/bin/gocov /usr/local/bin/gocov
+RUN go install github.com/AlekSi/gocov-xml@latest && mv ${GOPATH}/bin/gocov-xml /usr/local/bin/gocov-xml
 
