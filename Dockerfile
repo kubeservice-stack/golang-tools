@@ -32,5 +32,6 @@ RUN wget https://github.com/gotestyourself/gotestsum/releases/download/v${GOTEST
 FROM builder AS lint
 COPY --from=lint-base /usr/bin/golangci-lint /usr/bin/golangci-lint
 COPY --from=gotestsum /root/gotestsum /usr/local/bin/gotestsum
-RUN go get github.com/boumenot/gocover-cobertura
+RUN go get github.com/boumenot/gocover-cobertura && \
+    go install github.com/boumenot/gocover-cobertura || exit 0
 
