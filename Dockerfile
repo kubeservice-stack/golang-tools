@@ -8,7 +8,8 @@ RUN apk add --no-cache \
     bash \
     git \
     make \
-    wget
+    wget \
+    docker
 
 ####
 # golangci-lint
@@ -30,7 +31,7 @@ ARG GOTESTSUM_VERSION=1.11.0
 RUN wget https://github.com/gotestyourself/gotestsum/releases/download/v${GOTESTSUM_VERSION}/gotestsum_${GOTESTSUM_VERSION}_${OS}_${ARCH}.tar.gz -nv -O - | tar -xz
 
 ####
-# gotestsum
+# gosec
 ####
 FROM alpine:${ALPINE_VERSION} AS gosec
 RUN apk add --no-cache \
