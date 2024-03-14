@@ -41,7 +41,7 @@ WORKDIR /root
 ARG ARCH=amd64
 ARG OS=linux
 ARG GOSEC_VERSION=2.19.0
-RUN wget https://github.com/securego/gosec/releases/download/v${GOSEC_VERSION}/gosec_v${GOSEC_VERSION}_${OS}_${ARCH}.tar.gz -nv -O - | tar -xz
+RUN wget https://github.com/securego/gosec/releases/download/v${GOSEC_VERSION}/gosec_${GOSEC_VERSION}_${OS}_${ARCH}.tar.gz -nv -O - | tar -xz
 
 FROM builder AS lint
 COPY --from=lint-base /usr/bin/golangci-lint /usr/bin/golangci-lint
