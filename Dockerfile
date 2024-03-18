@@ -53,7 +53,7 @@ RUN go install github.com/axw/gocov/gocov@latest && mv ${GOPATH}/bin/gocov /usr/
 RUN go install github.com/AlekSi/gocov-xml@latest && mv ${GOPATH}/bin/gocov-xml /usr/local/bin/gocov-xml
 ARG ARCH=amd64
 ARG OS=linux
-ARG KIND_VERSION=0.22.0
+ARG KIND_VERSION=0.19.0
 ARG KUBECTL_VERSION=1.29.1
 RUN curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/${OS}/${ARCH}/kubectl && \
     chmod +x kubectl && \
