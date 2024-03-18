@@ -60,4 +60,4 @@ RUN curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v
     mv kubectl /usr/local/bin/ && \
     curl -Lo kind https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-${OS}-${ARCH} && \
     chmod +x kind && \
-    mv kind /usr/local/bin/ &&
+    mv kind /usr/local/bin/
