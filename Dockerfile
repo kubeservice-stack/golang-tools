@@ -55,7 +55,7 @@ ARG ARCH=amd64
 ARG OS=linux
 ARG KIND_VERSION=0.22.0
 ARG KUBECTL_VERSION=1.29.1
-RUN curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/${linux}/${amd64}/kubectl && \
+RUN curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/${OS}/${ARCH}/kubectl && \
     chmod +x kubectl && \
     mv kubectl /usr/local/bin/ && \
     curl -Lo kind https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-${OS}-${ARCH} && \
