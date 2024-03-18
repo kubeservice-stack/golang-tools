@@ -8,6 +8,7 @@ RUN apk add --no-cache \
     bash \
     git \
     make \
+    curl \
     wget \
     docker
 
@@ -50,4 +51,13 @@ COPY --from=gotestsum /root/gotestsum /usr/local/bin/gotestsum
 COPY --from=gosec /root/gosec /usr/local/bin/gosec
 RUN go install github.com/axw/gocov/gocov@latest && mv ${GOPATH}/bin/gocov /usr/local/bin/gocov
 RUN go install github.com/AlekSi/gocov-xml@latest && mv ${GOPATH}/bin/gocov-xml /usr/local/bin/gocov-xml
-
+ARG ARCH=amd64
+ARG OS=linux
+ARG KIND_VERSION=0.22.0
+ARG KUBECTL_VERSION=1.29.1
+RUN curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/${linux}/${amd64}/kubectl && \
+    chmod +x kubectl && \
+    mv kubectl /usr/local/bin/ && \
+    curl -Lo kind https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-${OS}-${ARCH} && \
+    chmod +x kind && \
+    mv kind /usr/local/bin/ &&
