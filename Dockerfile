@@ -51,6 +51,8 @@ COPY --from=gotestsum /root/gotestsum /usr/local/bin/gotestsum
 COPY --from=gosec /root/gosec /usr/local/bin/gosec
 RUN go install github.com/axw/gocov/gocov@latest && mv ${GOPATH}/bin/gocov /usr/local/bin/gocov
 RUN go install github.com/AlekSi/gocov-xml@latest && mv ${GOPATH}/bin/gocov-xml /usr/local/bin/gocov-xml
+RUN go install github.com/swaggo/swag/cmd/swag@latest && mv ${GOPATH}/bin/swag /usr/local/bin/swag
+RUN go install github.com/fzipp/gocyclo/cmd/gocyclo@latest && mv ${GOPATH}/bin/gocyclo /usr/local/bin/gocyclo
 ARG ARCH=amd64
 ARG OS=linux
 ARG KIND_VERSION=0.19.0
