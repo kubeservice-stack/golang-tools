@@ -20,7 +20,7 @@ jobs:
           -
             name: apisix-dev-env
             image: dongjiang1989/apisix-dev-env
-            file: ./Dockerfile.apisix-dev-env
+            file: ./dockerfile.apisix-dev-env
             platforms: linux/amd64,linux/arm64
 
     steps:
