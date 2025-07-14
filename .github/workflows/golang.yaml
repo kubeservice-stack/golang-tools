@@ -1,6 +1,8 @@
 on:
   push:
     branches: [ "master" ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "master" ]
 
@@ -52,7 +54,7 @@ jobs:
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ matrix.image }}:${{steps.git-branch.outputs.git-branch}}
-            ${{ env.REGISTRY }}/${{ matrix.image }}:1.22.1-alpine
+            ${{ env.REGISTRY }}/${{ matrix.image }}:1.23.0-alpine
             ${{ env.REGISTRY }}/${{ matrix.image }}:latest
       - name: Test ${{ matrix.name }}
         run: |
